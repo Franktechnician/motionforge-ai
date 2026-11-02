@@ -22,5 +22,14 @@ export async function POST(req:NextRequest){
  const response=await fetch(`https://api.replicate.com/v1/models/${model}/predictions`,{method:'POST',headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json',Prefer:'wait=5'},body:JSON.stringify({input}),cache:'no-store'});
  const data=await response.json();if(!response.ok)return NextResponse.json({error:String(data.detail||data.error||'Provider error')},{status:response.status});
  return NextResponse.json({id:data.id,status:data.status,output:data.output});
- }catch{return NextResponse.json({error:'Generation request failed'},{status:500})}
+ } catch (error) {
+  console.error(
+    "GENERATION_ERROR:",
+    error instanceof Error ? error.message : "Unknown error"
+  );
+
+  return NextResponse.json(
+    { error: "Generation request failed. Check server logs." },
+    { status: 500 }
+  );
 }
