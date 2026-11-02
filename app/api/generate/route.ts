@@ -32,4 +32,5 @@ export async function POST(req:NextRequest){
     { error: "Generation request failed. Check server logs." },
     { status: 500 }
   );
+ }
 }
