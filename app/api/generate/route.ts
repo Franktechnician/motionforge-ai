@@ -1,5 +1,5 @@
 import {NextRequest,NextResponse} from 'next/server';
-import { authorized } from "../../lib/auth";;
+import { authorized } from "../../lib/auth";
 const allowed=['image','text_video','image_video','lip_sync','motion_control','video_extend','effects','start_end','image_edit'] as const;
 const envKeys:Record<string,string>={image:'REPLICATE_IMAGE_MODEL',text_video:'REPLICATE_TEXT_VIDEO_MODEL',image_video:'REPLICATE_IMAGE_VIDEO_MODEL',lip_sync:'REPLICATE_LIP_SYNC_MODEL',motion_control:'REPLICATE_MOTION_CONTROL_MODEL',video_extend:'REPLICATE_VIDEO_EXTEND_MODEL',effects:'REPLICATE_EFFECTS_MODEL',start_end:'REPLICATE_START_END_MODEL',image_edit:'REPLICATE_IMAGE_EDIT_MODEL'};
 const defaults:Record<string,string>={image:'black-forest-labs/flux-schnell'};
